@@ -5,9 +5,18 @@
 
 <h2>Play here</h2>
 
-@foreach (var fileName in Model)
-{
-    <video width="320" height="240" controls>
-        <source src="@Url.Content($"~/Videos/{fileName}")" type="video/mp4">
-    </video>
-}
+<div class="container body-content">
+    <div class="row">
+        @foreach (var fileName in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div>
+                    <video width="250" height="150">
+                        <source src="@Url.Content($"~/Videos/{fileName}")" type="video/mp4">
+                    </video>
+                    <div style="font-weight: bold">@fileName</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -12,12 +12,14 @@ namespace plground.Controllers
     public class HomeController : Controller
     {
         private readonly string _pass = ConfigurationManager.AppSettings["pass"];
+        private readonly IEnumerable<string> videoExtentions = ConfigurationManager.AppSettings["videoExtentions"].Split(',');
 
         [Authorize]
         public ActionResult Index()
         {
             var filenames = Directory.EnumerateFiles(Server.MapPath("~/Videos"))
                 .Select(x => Path.GetFileName(x))
+                .Where(x => videoExtentions.Contains(Path.GetExtension(x)))
                 .OrderBy(x => x)
                 .ToList();
 

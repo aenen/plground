@@ -8,6 +8,6 @@
 @foreach (var fileName in Model)
 {
     <video width="320" height="240" controls>
-        <source src="~/Videos/@fileName" type="video/mp4">
+        <source src="@Url.Content($"~/Videos/{fileName}")" type="video/mp4">
     </video>
 }
